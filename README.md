@@ -1,5 +1,6 @@
 Pyladies
 =======
+Conteúdo do Projeto feito no Hangout para as meninas do Pyladies
 
 Como Instalar
 ===============
