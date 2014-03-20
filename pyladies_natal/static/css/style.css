@@ -198,3 +198,7 @@ p a {
 a, a:hover {
   color: rgba(0, 0, 0, 0.7);
 }
+
+.item.serie {
+  width: 400px !important;
+}
