@@ -18,3 +18,5 @@ Como Instalar
 
 Duvidas Comuns
 ===============
+#### O que é: `import ipdb;ipdb.set_trace()`
+O `ipdb` é um módulo instalável pelo pip: `$ pip install ipdb` ele oferece algumas coisas legais, porém é usado apenas para Depuração. É uma versão melhorada do `pdb`, nativo do Python.
