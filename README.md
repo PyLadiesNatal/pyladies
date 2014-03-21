@@ -20,3 +20,7 @@ Duvidas Comuns
 ===============
 #### O que é: `import ipdb;ipdb.set_trace()`
 O `ipdb` é um módulo instalável pelo pip: `$ pip install ipdb` ele oferece algumas coisas legais, porém é usado apenas para Depuração. É uma versão melhorada do `pdb`, nativo do Python.
+
+#### Resolvendo: `ImportError: No module named flask_wft`
+Esse erro normalmente é causando por um Módulo externo que não está instalado corretamente.
+digite: `$ pip install Flask-WTF` para resolvêlo, isso normalmente funciona.
