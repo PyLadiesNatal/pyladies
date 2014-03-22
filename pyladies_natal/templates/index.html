@@ -13,141 +13,28 @@
       </h2>
       <div class="ui doubling inverted connected items">
         <div class="row">
-          <div class="item serie">
-            <div class="image">
-              <img src="http://semantic-ui.com/images/demo/highres4.jpg">
-            </div>
-            <div class="content">
-              <div class="name">Lorem ipsum</div>
-              <p class="description">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. </p>
-              <br/>
-              <div class="ui left medium heart rating" data-rating="5">
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
+          {% for serie in series %}
+            <div class="serie item">
+              <div class="image">
+                <img src="{{ serie.get('image') }}">
               </div>
-              <div class="ui right mini buttons">
-                <div class="ui button"><a class="ui" href="/series/0/edit/">Editar</a></div>
-                <div class="or"></div>
-                <div class="remove-serie ui negative button">Remover</div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="image">
-              <img src="http://semantic-ui.com/images/demo/highres5.jpg">
-            </div>
-            <div class="content">
-              <div class="name">Lorem ipsum</div>
-              <p class="description">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. </p>
-              <br/>
-              <div class="ui left medium heart rating" data-rating="5">
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-              </div>
-              <div class="ui right mini buttons">
-                <div class="ui button"><a class="ui" href="/series/0/edit/">Editar</a></div>
-                <div class="or"></div>
-                <div class="remove-serie ui negative button">Remover</div>
+              <div class="content">
+                <div class="name">{{ serie.get('name') }}</div>
+                <p class="description">{{ serie.get('description') }}</p>
+                <br/>
+                <div class="ui left medium heart rating" data-rating="{{ serie.get('rating')|int }}" data-serie="{{ serie.get('_id') }}">
+                  {% for rating in range(0,5) %}
+                    <i class="icon {% if rating < serie.get('rating')|int  %}active{% endif %}"></i>
+                  {% endfor %}
+                </div>
+                <div class="ui right mini buttons">
+                  <div class="ui button"><a class="ui" href="/series/{{ serie.get('_id') }}/edit/">Editar</a></div>
+                  <div class="or"></div>
+                  <div class="remove-serie ui negative button" data-serie="{{ serie.get('_id') }}">Remover</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="item">
-            <div class="image">
-              <img src="http://semantic-ui.com/images/demo/highres3.jpg">
-            </div>
-            <div class="content">
-              <div class="name">Lorem ipsum</div>
-              <p class="description">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. </p>
-              <br/>
-              <div class="ui left medium heart rating" data-rating="5">
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-              </div>
-              <div class="ui right mini buttons">
-                <div class="ui button"><a class="ui" href="/series/0/edit/">Editar</a></div>
-                <div class="or"></div>
-                <div class="remove-serie ui negative button">Remover</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="item">
-            <div class="image">
-              <img src="http://semantic-ui.com/images/demo/highres4.jpg">
-            </div>
-            <div class="content">
-              <div class="name">Lorem ipsum</div>
-              <p class="description">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. </p>
-              <br/>
-              <div class="ui left medium heart rating" data-rating="5">
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-              </div>
-              <div class="ui right mini buttons">
-                <div class="ui button"><a class="ui" href="/series/0/edit/">Editar</a></div>
-                <div class="or"></div>
-                <div class="remove-serie ui negative button">Remover</div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="image">
-              <img src="http://semantic-ui.com/images/demo/highres5.jpg">
-            </div>
-            <div class="content">
-              <div class="name">Lorem ipsum</div>
-              <p class="description">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. </p>
-              <br/>
-              <div class="ui left medium heart rating" data-rating="5">
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-              </div>
-              <div class="ui right mini buttons">
-                <div class="ui button"><a class="ui" href="/series/0/edit/">Editar</a></div>
-                <div class="or"></div>
-                <div class="remove-serie ui negative button">Remover</div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="image">
-              <img src="http://semantic-ui.com/images/demo/highres3.jpg">
-            </div>
-            <div class="content">
-              <div class="name">Lorem ipsum</div>
-              <p class="description">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. </p>
-              <br/>
-              <div class="ui left medium heart rating" data-rating="5">
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-                <i class="icon active"></i>
-              </div>
-              <div class="ui right mini buttons">
-                <div class="ui button"><a class="ui" href="/series/0/edit/">Editar</a></div>
-                <div class="or"></div>
-                <div class="remove-serie ui negative button">Remover</div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>

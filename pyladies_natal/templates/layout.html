@@ -31,6 +31,19 @@
           </h1>
         </div>
       </div>
+      <div class="row">
+      <div class="wide column">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% for category, message in messages %}
+            <div class="ui {{ category }} message">
+              <i class="close icon"></i>
+              <div class="header">
+                {{ message }}
+              </div>
+            </div>
+          {% endfor %}
+        {% endwith %}
+      </div></div>
 
       {% block content %}{% endblock %}
     </div>
@@ -62,19 +75,22 @@
           </div>
         </div>
         <div class="actions">
-          <div class="two fluid ui buttons">
-            <div class="ui negative labeled icon button">
-              <i class="remove icon"></i>
-              No
+          <form method="POST" action="">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <div class="two fluid ui buttons">
+              <button class="ui negative labeled icon button">
+                <i class="remove icon"></i>
+                No
+              </button>
+              <button type="submit" class="ui positive right labeled icon button" >
+                <i class="checkmark icon"></i>
+                Yes
+                </button>
+              </div>
             </div>
-            <div class="ui positive right labeled icon button">
-              Yes
-              <i class="checkmark icon"></i>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
-
   </body>
 </html>

@@ -9,24 +9,30 @@
       </h2>
       <div class="ui form segment">
         <form action="/series/add/" method="POST" enctype="multipart/form-data">
-          <input id="csrf_token" name="csrf_token" type="hidden" value="1395280267.73##4d3ed1ea61cafcffd351accf58094e03f1f73425">
+          {{ form.csrf_token }}
 
-          <div class="field ">
-            <label><label for="name">Name</label></label>
-            <input id="name" name="name" type="text" value="">
-
+          <div class="field {% if form.name.errors %}error{% endif %}">
+            <label>{{ form.name.label }}</label>
+            {{ form.name }}
+            {% for error in form.name.errors %}
+              <div class="ui red pointing above ui label">{{ error }}</div>
+            {% endfor %}
           </div>
 
-          <div class="field ">
-            <label><label for="description">Description</label></label>
-            <textarea id="description" name="description"></textarea>
-
+          <div class="field {% if form.description.errors %}error{% endif %}">
+            <label>{{ form.description.label }}</label>
+            {{ form.description }}
+            {% for error in form.description.errors %}
+              <div class="ui red pointing above ui label">{{ error }}</div>
+            {% endfor %}
           </div>
 
-          <div class="field ">
-            <label><label for="image">Image URL</label></label>
-            <input id="image" name="image" type="text" value="">
-
+          <div class="field {% if form.image.errors %}error{% endif %}">
+            <label>{{ form.image.label }}</label>
+            {{ form.image }}
+            {% for error in form.image.errors %}
+              <div class="ui red pointing above ui label">{{ error }}</div>
+            {% endfor %}
           </div>
 
           <button type="submit" class="ui blue submit button">Submit</button>

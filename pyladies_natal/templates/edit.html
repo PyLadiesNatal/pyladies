@@ -5,29 +5,26 @@
     <div class="wide column">
       <div class="ui horizontal inverted divider"><i class="heart icon"></i></div>
       <h2 class="ui header">
-        Edit Serie "#2 Lorem Ipsum"
+        Edit Serie
       </h2>
-      <div class="ui form segment">
-        <form action="/series/add/" method="POST" enctype="multipart/form-data">
-          <input id="csrf_token" name="csrf_token" type="hidden" value="1395280267.73##4d3ed1ea61cafcffd351accf58094e03f1f73425">
-
-          <div class="field ">
-            <label><label for="name">Name</label></label>
-            <input id="name" name="name" type="text" value="">
-
+      <div class="ui error form segment">
+        <form action="/series/{{ serie_id }}/edit/" method="POST" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <input id="id" name="id" type="hidden" value="{{ serie_id }}">
+        <div class="field">
+          <div class="field">
+            <label>{{ form.name.label }}</label>
+            {{ form.name }}
           </div>
-
-          <div class="field ">
-            <label><label for="description">Description</label></label>
-            <textarea id="description" name="description"></textarea>
-
-          </div>
-
-          <div class="field ">
-            <label><label for="image">Image URL</label></label>
-            <input id="image" name="image" type="text" value="">
-
-          </div>
+        </div>
+        <div class="field">
+          <label>{{ form.description.label }}</label>
+            {{ form.description }}
+        </div>
+        <div class="field">
+          <label>{{ form.image.label }}</label>
+            {{ form.image }}
+        </div>
 
           <button type="submit" class="ui blue submit button">Submit</button>
           <div class="ui submit button"><a href="/">Cancel</a></div>
