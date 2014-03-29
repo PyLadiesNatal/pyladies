@@ -10,3 +10,4 @@ ipython==1.2.1
 itsdangerous==0.23
 pymongo==2.6.3
 wsgiref==0.1.2
+gunicorn

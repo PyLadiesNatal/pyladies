@@ -71,21 +71,21 @@
             <i class="video icon"></i>
           </div>
           <div class="right">
-            <p>Are you sure you want to delete the serie <b>"#22 Lorem Ipsum"</b>?</p>
+            <p>Are you sure you want to delete this serie?</p>
           </div>
         </div>
         <div class="actions">
           <form method="POST" action="">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <div class="two fluid ui buttons">
-              <button class="ui negative labeled icon button">
+              <a class="ui negative labeled icon button" href="javascript:;">
                 <i class="remove icon"></i>
                 No
-              </button>
+              </a>
               <button type="submit" class="ui positive right labeled icon button" >
                 <i class="checkmark icon"></i>
                 Yes
-                </button>
+              </button>
               </div>
             </div>
           </form>
