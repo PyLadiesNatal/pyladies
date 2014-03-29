@@ -4,9 +4,9 @@ from flask import Flask, flash, request, redirect, render_template, url_for
 
 from flask.ext.pymongo import PyMongo
 from flask_wtf.csrf import CsrfProtect
-from bson.objectid import ObjectId
 
 from forms import SeriesForm
+
 
 app = Flask(__name__)
 CsrfProtect(app)
@@ -33,9 +33,9 @@ def add():
     return render_template("add.html", form=form)
 
 
-@app.route("/series/<serie_id>/edit/", methods=['GET', 'POST'])
+@app.route("/series/<ObjectId:serie_id>/edit/", methods=['GET', 'POST'])
 def edit(serie_id):
-    serie = mongo.db.series.find_one({'_id': ObjectId(serie_id)})
+    serie = mongo.db.series.find_one({'_id': serie_id})
     form = SeriesForm(**serie)
     if request.method == 'POST':
         if form.validate():
@@ -48,16 +48,16 @@ def edit(serie_id):
     return render_template("edit.html", form=form, serie_id=serie_id)
 
 
-@app.route("/series/<serie_id>/delete/", methods=['POST'])
+@app.route("/series/<ObjectId:serie_id>/delete/", methods=['POST'])
 def delete(serie_id):
-    mongo.db.series.remove({'_id': ObjectId(serie_id)})
+    mongo.db.series.remove({'_id': serie_id})
     flash(u'Yes! O seriado foi excluído com sucesso!', 'success')
     return redirect(url_for('index'))
 
 
-@app.route("/series/<serie_id>/rating/<rating>/", methods=['GET'])
+@app.route("/series/<ObjectId:serie_id>/rating/<rating>/", methods=['GET'])
 def rating(serie_id, rating):
-    serie = mongo.db.series.find_one({'_id': ObjectId(serie_id)})
+    serie = mongo.db.series.find_one({'_id': serie_id})
     serie['rating'] = rating
     mongo.db.series.save(serie)
     return redirect(url_for('index'))
